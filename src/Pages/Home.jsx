@@ -1,0 +1,26 @@
+import React ,{ useState } from 'react'
+import TodoHeader from '../Components/TodoHeader';
+import TodoList from '../Components/TodoList';
+import TodoForm from '../Components/TodoForm';
+export default function Home() {
+    const [tasks,setTasks]= useState([{
+        id:Date.now(),
+        isDone:false,
+        body: '',
+    }])
+    const addTask=values=>{
+        const newTask={
+         body:values.addingTask,
+         id:Date.now(),
+         isDone:false,
+        }
+        setTasks([...tasks,newTask]);
+    }
+    return (
+        <div>
+            <TodoHeader/>
+            <TodoList tasks={tasks}/>
+            <TodoForm addTask={addTask} tasks={tasks}/>
+        </div>
+    )
+}
